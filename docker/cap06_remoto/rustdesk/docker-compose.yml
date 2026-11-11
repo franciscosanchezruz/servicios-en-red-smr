@@ -1,0 +1,18 @@
+services:
+  hbbs:
+    image: rustdesk/rustdesk-server:latest
+    container_name: smr-rustdesk-hbbs
+    command: hbbs -r 10.0.0.10:21117
+    volumes:
+      - ./data:/root
+    network_mode: "host"
+    restart: unless-stopped
+
+  hbbr:
+    image: rustdesk/rustdesk-server:latest
+    container_name: smr-rustdesk-hbbr
+    command: hbbr
+    volumes:
+      - ./data:/root
+    network_mode: "host"
+    restart: unless-stopped
