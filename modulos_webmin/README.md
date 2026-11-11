@@ -23,3 +23,4 @@ Este directorio contiene los paquetes y extensiones para el panel de administrac
    * Haz clic en **Examinar (*Browse*)** y selecciona `vsftpd.wbm.gz`.
 5. Pulsa el botón verde **Instalar módulo (*Install Module*)**.
 6. Una vez finalizada la instalación, refresca la página: el módulo estará disponible en la sección **Servidores (*Servers*) → Servidor FTP (vsftpd)**.
+
