@@ -1,0 +1,16 @@
+// ==============================================================================
+// /etc/bind/named.conf.local - Declaración de Zonas Directa e Inversa (smr.lan)
+// Libro: 'Servicios en Red' - Francisco Sánchez Ruz (Editorial Monsálvez)
+// ==============================================================================
+
+zone "smr.lan" {
+    type master;
+    file "/etc/bind/db.smr.lan";
+    allow-query { any; };
+};
+
+zone "0.0.10.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.10.0.0";
+    allow-query { any; };
+};

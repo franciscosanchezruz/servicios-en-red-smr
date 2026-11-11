@@ -1,0 +1,20 @@
+<user-mapping>
+    <authorize username="profesor" password="ClaveSegura2026!">
+        <connection name="Servidor Linux SMR (SSH)">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.10</param>
+            <param name="port">2222</param>
+        </connection>
+        <connection name="Puesto Windows 11 (RDP)">
+            <protocol>rdp</protocol>
+            <param name="hostname">10.0.0.12</param>
+            <param name="port">3389</param>
+            <param name="ignore-cert">true</param>
+        </connection>
+        <connection name="Servidor Linux GUI (VNC)">
+            <protocol>vnc</protocol>
+            <param name="hostname">10.0.0.10</param>
+            <param name="port">5900</param>
+        </connection>
+    </authorize>
+</user-mapping>

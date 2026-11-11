@@ -1,0 +1,21 @@
+# ==============================================================================
+# /etc/iptables/rules.v4 - Reglas Netfilter / iptables Persistentes
+# ==============================================================================
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+# Enmascaramiento de la red interna 10.0.0.0/24 hacia la WAN (eth0)
+-A POSTROUTING -s 10.0.0.0/24 -o eth0 -j MASQUERADE
+COMMIT
+
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+# Permitir tráfico establecido y relacionado
+-A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+# Permitir salida de los puestos de alumnos (eth1 -> eth0)
+-A FORWARD -i eth1 -o eth0 -s 10.0.0.0/24 -j ACCEPT
+COMMIT

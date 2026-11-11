@@ -1,0 +1,14 @@
+ 86400
+@   IN  SOA server.smr.lan. admin.smr.lan. (
+            2026111001 ; Serial
+            3600
+            1800
+            604800
+            86400 )
+
+@       IN  NS      server.smr.lan.
+
+1       IN  PTR     router.smr.lan.
+10      IN  PTR     server.smr.lan.
+20      IN  PTR     printer.smr.lan.
+25      IN  PTR     profesor.smr.lan.

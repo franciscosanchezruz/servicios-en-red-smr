@@ -1,0 +1,16 @@
+services:
+  bind9:
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: smr-bind9-server
+    restart: unless-stopped
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    environment:
+      - BIND9_USER=bind
+    volumes:
+      - ./config/named.conf.local:/etc/bind/named.conf.local:ro
+      - ./config/named.conf.options:/etc/bind/named.conf.options:ro
+      - ./zones/db.smr.lan:/etc/bind/db.smr.lan:ro
+      - ./zones/db.10.0.0:/etc/bind/db.10.0.0:ro
+      - ./cache:/var/cache/bind

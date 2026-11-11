@@ -1,0 +1,20 @@
+ 86400
+@   IN  SOA server.smr.lan. admin.smr.lan. (
+            2026111001 ; Serial
+            3600       ; Refresh (1 hora)
+            1800       ; Retry (30 minutos)
+            604800     ; Expire (1 semana)
+            86400 )    ; Minimum TTL (1 día)
+
+@       IN  NS      server.smr.lan.
+@       IN  MX  10  mail.smr.lan.
+
+server  IN  A       10.0.0.10
+router  IN  A       10.0.0.1
+mail    IN  A       10.0.0.10
+printer IN  A       10.0.0.20
+profesor IN A       10.0.0.25
+
+www     IN  CNAME   server.smr.lan.
+ftp     IN  CNAME   server.smr.lan.
+webmail IN  CNAME   server.smr.lan.

@@ -1,0 +1,17 @@
+# ==============================================================================
+# /etc/ssh/sshd_config - Configuración Securizada de OpenSSH
+# Libro: 'Servicios en Red' - Francisco Sánchez Ruz (Editorial Monsálvez)
+# ==============================================================================
+Port 22
+AddressFamily inet
+ListenAddress 10.0.0.10
+
+PermitRootLogin no
+MaxAuthTries 3
+PubkeyAuthentication yes
+PasswordAuthentication yes
+X11Forwarding yes
+PrintMotd no
+Banner /etc/issue.net
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/openssh/sftp-server

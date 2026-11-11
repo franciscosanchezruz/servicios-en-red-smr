@@ -1,0 +1,37 @@
+services:
+  mailserver:
+    image: mailserver/docker-mailserver:latest
+    container_name: smr-mail-server
+    hostname: mail
+    domainname: smr.lan
+    restart: unless-stopped
+    ports:
+      - "25:25"
+      - "587:587"
+      - "143:143"
+      - "993:993"
+    environment:
+      - OVERRIDE_HOSTNAME=mail.smr.lan
+      - ENABLE_SPAMASSASSIN=0
+      - ENABLE_CLAMAV=0
+      - ENABLE_FAIL2BAN=1
+      - ONE_DIR=1
+      - DMS_SSL=0
+    volumes:
+      - ./maildata:/var/mail
+      - ./mailstate:/var/mail-state
+      - ./config:/tmp/docker-mailserver
+
+  roundcube:
+    image: roundcube/roundcubemail:latest
+    container_name: smr-roundcube-webmail
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - ROUNDCUBEMAIL_DEFAULT_HOST=mailserver
+      - ROUNDCUBEMAIL_SMTP_SERVER=mailserver
+      - ROUNDCUBEMAIL_DEFAULT_PORT=143
+      - ROUNDCUBEMAIL_SMTP_PORT=25
+    depends_on:
+      - mailserver

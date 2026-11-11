@@ -1,0 +1,18 @@
+services:
+  ftpd:
+    image: fauria/vsftpd:latest
+    container_name: smr-vsftpd-server
+    restart: unless-stopped
+    ports:
+      - "20:20"
+      - "21:21"
+      - "40000-40050:40000-40050"
+    environment:
+      - FTP_USER=ftpuser
+      - FTP_PASS=SMR2026Secure!
+      - PASV_ADDRESS=10.0.0.10
+      - PASV_MIN_PORT=40000
+      - PASV_MAX_PORT=40050
+    volumes:
+      - ./data:/home/vsftpd/ftpuser
+      - ./config/vsftpd.conf:/etc/vsftpd/vsftpd.conf:ro

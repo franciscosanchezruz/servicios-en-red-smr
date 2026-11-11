@@ -1,0 +1,11 @@
+services:
+  dhcp-server:
+    image: networkboot/dhcpd:latest
+    container_name: smr-dhcp-server
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - INTERFACES=enp0s3
+    volumes:
+      - ./dhcpd.conf:/etc/dhcp/dhcpd.conf:ro
+      - ./data:/var/lib/dhcp

@@ -1,0 +1,14 @@
+services:
+  webserver:
+    image: php:8.2-apache
+    container_name: smr-apache-web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./html:/var/www/html
+      - ./sites/000-default.conf:/etc/apache2/sites-available/000-default.conf:ro
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
