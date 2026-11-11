@@ -25,7 +25,10 @@ Este repositorio contiene los recursos digitales, plantillas de configuración d
 │   ├── desplegar_servidor_smr.sh  # Script de instalación y aprovisionamiento del Servidor 10.0.0.10
 │   ├── configurar_cliente_smr.sh  # Script de configuración y comprobación de clientes DHCP/DNS
 │   └── verificar_servicios_smr.sh # Suite de auditoría y diagnóstico automático en consola (PASS/FAIL)
-├── docker/                        # Suite de despliegue con Docker y Docker Compose (Tercera Vía)
+├── modulos_webmin/                # Extensiones y módulos empaquetados para el panel Webmin
+│   ├── README.md                  # Instrucciones de importación e instalación en Webmin
+│   └── vsftpd.wbm.gz              # Módulo de administración para el servidor FTP seguro vsftpd
+├── docker/                        # Suite de despliegue con Docker y Docker Compose
 │   ├── README.md                  # Guía rápida de orquestación en contenedores
 │   ├── cap01_dhcp/                # isc-dhcp-server en contenedor (network_mode: host)
 │   ├── cap02_dns/                 # BIND9 autoritativo y caché en contenedor (puertos 53 udp/tcp)
