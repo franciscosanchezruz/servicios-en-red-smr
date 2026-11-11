@@ -3,12 +3,16 @@ services:
     image: php:8.2-apache
     container_name: smr-apache-web
     restart: unless-stopped
+    command: sh -c "a2enmod ssl rewrite && apache2-foreground"
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - ./html:/var/www/html
       - ./sites/000-default.conf:/etc/apache2/sites-available/000-default.conf:ro
+      - ./sites/.htpasswd:/etc/apache2/.htpasswd:ro
+      - ./certs/smr_web.crt:/etc/ssl/certs/smr_web.crt:ro
+      - ./certs/smr_web.key:/etc/ssl/private/smr_web.key:ro
     environment:
       - APACHE_RUN_USER=www-data
       - APACHE_RUN_GROUP=www-data
